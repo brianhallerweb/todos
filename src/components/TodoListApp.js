@@ -26,7 +26,7 @@ class TodoListApp extends Component {
         "Content-Type": "application/json"
       }
     })
-      .then(() => fetch("/api/notes"))
+      .then(() => fetch("/api/getTodos"))
       .then(res => res.json())
       .then(todos => {
         this.setState({ todos });
@@ -58,7 +58,7 @@ class TodoListApp extends Component {
         <Header />
         <Todos
           todos={this.state.todos}
-          deleteTodo={this.handleDelete.bind(this)}
+          handleDelete={this.handleDelete.bind(this)}
         />
         <AddTodo handleAdd={this.handleAdd.bind(this)} />
       </div>
