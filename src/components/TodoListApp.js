@@ -12,15 +12,15 @@ class TodoListApp extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/notes")
+    fetch("/api/getTodos")
       .then(res => res.json())
       .then(todos => {
         this.setState({ todos });
       });
   }
 
-  deleteTodo(todoId) {
-    fetch("/api/notes/" + todoId, {
+  handleDelete(todoId) {
+    fetch("/api/deleteTodo/" + todoId, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -36,7 +36,7 @@ class TodoListApp extends Component {
   handleAdd(todo) {
     if (!todo) return "Enter valid text to add a todo";
 
-    fetch("/api/notes", {
+    fetch("/api/postTodo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -45,7 +45,7 @@ class TodoListApp extends Component {
         todo
       })
     })
-      .then(() => fetch("/api/notes"))
+      .then(() => fetch("/api/getTodos"))
       .then(res => res.json())
       .then(todos => {
         this.setState({ todos });
@@ -58,7 +58,7 @@ class TodoListApp extends Component {
         <Header />
         <Todos
           todos={this.state.todos}
-          deleteTodo={this.deleteTodo.bind(this)}
+          deleteTodo={this.handleDelete.bind(this)}
         />
         <AddTodo handleAdd={this.handleAdd.bind(this)} />
       </div>

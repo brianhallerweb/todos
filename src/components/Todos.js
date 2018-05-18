@@ -11,7 +11,7 @@ const Todos = props => {
             key={todo._id}
             todo={todo.todo}
             id={todo._id}
-            deleteTodo={props.deleteTodo}
+            handleDelete={props.handleDelete}
           />
         ))}
       </ol>

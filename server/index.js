@@ -15,17 +15,21 @@ mongoose
   .catch(err => console.log("Could not connect to MongoDB...", err));
 
 app.use(bodyParser.json());
+
+app.get("/api/getTodos", (req, res) => {
+  Todo.find()
+    .then(todos => res.json(todos))
+    .catch(err => res.status(500).json(err));
+});
+
+app.post("/api/postTodo", postTodo);
+
+app.delete("/api/deleteTodo/:id", deleteTodo);
+
 app.use(express.static("public"));
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "../public/index.html"))
 );
 
-app.get("/api/notes", getTodos);
-
-app.post("/api/notes", postTodo);
-
-app.delete("/api/notes/:id", deleteTodo);
-
-app.listen(process.env.PORT || 8081, () =>
-  console.log("Todos server running...")
-);
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Todos server running on port ${port}...`));
