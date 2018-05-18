@@ -1,42 +1,31 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const path = require("path");
 const mongoose = require("mongoose");
+const Todo = require("./models/todoModel");
+
+const getTodos = require("./controllers/getTodos");
+const postTodo = require("./controllers/postTodo");
+const deleteTodo = require("./controllers/deleteTodo");
+
 mongoose
-  .connect("mongodb://localhost/todos")
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/todos")
   .then(() => console.log("Connected to MongoDB..."))
   .catch(err => console.log("Could not connect to MongoDB...", err));
-const Todos = require("./models/todosModel");
 
 app.use(bodyParser.json());
+app.use(express.static("public"));
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "../public/index.html"))
+);
 
-app.get("/api/notes", (req, res) => {
-  Todos.find((err, todos) => {
-    res.json(todos);
-  });
-});
+app.get("/api/notes", getTodos);
 
-app.post("/api/notes", (req, res) => {
-  const newTodo = new Todos({
-    todo: req.body.todo
-  });
-  newTodo.save((err, result) => {
-    if (err) {
-      res.status(500).json(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
+app.post("/api/notes", postTodo);
 
-app.delete("/api/notes/:id", (req, res) => {
-  Todos.remove({ _id: req.params.id }, (err, result) => {
-    if (err) {
-      res.status(500).json(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
+app.delete("/api/notes/:id", deleteTodo);
 
-app.listen(8081, () => console.log("Todos server running..."));
+app.listen(process.env.PORT || 8081, () =>
+  console.log("Todos server running...")
+);
