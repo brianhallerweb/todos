@@ -1,2 +1,3 @@
-# todos
-An example of the simplest web app made with the MERN stack - a todo list. 
+## Todos app
+
+### An example of a full stack application written with the MERN stack.
