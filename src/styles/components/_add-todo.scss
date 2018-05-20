@@ -1,19 +1,18 @@
-.add-option-error {
-  color: $off-white;
+.add-todo-error {
+  color: $off-black;
   font-style: italic;
   margin: $m-size 0 0 0;
-  padding: 0 $m-size;
 }
 
-.add-option {
+.add-todo {
   display: flex;
   flex-direction: column;
-  padding: $m-size;
+  padding-top: $m-size;
 }
 
-.add-option__input {
+.add-todo__input {
   border: none;
-  color: $dark-blue;
+  color: $off-black;
   flex-grow: 1;
   margin: 0 0 $s-size 0;
   padding: $s-size;

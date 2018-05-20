@@ -4,8 +4,10 @@ import Todo from "./Todo";
 const Todos = props => {
   return (
     <div>
-      {props.todos.length === 0 && <p>please add a todo to get started</p>}
-      <ol>
+      {props.todos.length === 0 && (
+        <p className="add-todo-error">Please add a todo to get started</p>
+      )}
+      <div>
         {props.todos.map(todo => (
           <Todo
             key={todo._id}
@@ -14,7 +16,7 @@ const Todos = props => {
             handleDelete={props.handleDelete}
           />
         ))}
-      </ol>
+      </div>
     </div>
   );
 };

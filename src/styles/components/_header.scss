@@ -1,6 +1,6 @@
 .header {
-  background: $off-black;
-  color: white;
+  border-bottom: 1px solid lighten($off-black, 75%);
+  color: $off-black;
   margin-bottom: $m-size;
   padding: $m-size 0;
 }
@@ -8,4 +8,5 @@
 .header__title {
   font-size: $l-size;
   margin: 0;
+  text-align: center;
 }

@@ -23,10 +23,10 @@ class AddTodo extends Component {
     return (
       <div>
         {this.state.error && (
-          <p className="add-option-error">{this.state.error}</p>
+          <p className="add-todo-error">{this.state.error}</p>
         )}
-        <form className="add-option" onSubmit={this.handleAdd.bind(this)}>
-          <input className="add-option__input" type="text" name="newTodo" />
+        <form className="add-todo" onSubmit={this.handleAdd.bind(this)}>
+          <input className="add-todo__input" type="text" name="newTodo" />
           <button className="button">Add</button>
         </form>
       </div>
