@@ -56,11 +56,13 @@ class TodoListApp extends Component {
     return (
       <div>
         <Header />
-        <Todos
-          todos={this.state.todos}
-          handleDelete={this.handleDelete.bind(this)}
-        />
-        <AddTodo handleAdd={this.handleAdd.bind(this)} />
+        <div className="container">
+          <Todos
+            todos={this.state.todos}
+            handleDelete={this.handleDelete.bind(this)}
+          />
+          <AddTodo handleAdd={this.handleAdd.bind(this)} />
+        </div>
       </div>
     );
   }
