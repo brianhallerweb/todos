@@ -12,7 +12,7 @@ The major difference between class based components and functional components is
 
 #### Downward data flow
 
-React components are arranged in a hierarchical fashion where parent components can only pass props downward to children. However, parents can pass functions as props that impact the state of the parent component. This effectively allows for 2 way data flow. The <AddTodo /> component provides a good example of this technique.
+React components are arranged in a hierarchical fashion where parent components can only pass props downward to children. However, parents can pass functions as props that impact the state of the parent component. This effectively allows for 2 way data flow. The AddTodo component provides a good example of this technique.
 
 #### Component lifecycle methods
 
