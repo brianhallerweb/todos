@@ -1,6 +1,6 @@
 ## Todos app
 
-### An example for my reference of a full stack application written with the MERN stack and deployed on Heroku.
+### An example of a full stack application written with the MERN stack and deployed on Heroku.
 
 #### Overview of React, ReactDOM, Webpack, and Babel
 
