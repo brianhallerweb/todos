@@ -16,11 +16,7 @@ mongoose
 
 app.use(bodyParser.json());
 
-app.get("/api/getTodos", (req, res) => {
-  Todo.find()
-    .then(todos => res.json(todos))
-    .catch(err => res.status(500).json(err));
-});
+app.get("/api/getTodos", getTodos);
 
 app.post("/api/postTodo", postTodo);
 
