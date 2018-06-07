@@ -12,21 +12,7 @@ class TodoListApp extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/getTodos")
-      .then(res => res.json())
-      .then(todos => {
-        this.setState({ todos });
-      });
-  }
-
-  handleDelete(todoId) {
-    fetch("/api/deleteTodo/" + todoId, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(() => fetch("/api/getTodos"))
+    fetch("/todos")
       .then(res => res.json())
       .then(todos => {
         this.setState({ todos });
@@ -36,7 +22,7 @@ class TodoListApp extends Component {
   handleAdd(todo) {
     if (!todo) return "Enter valid text to add a todo";
 
-    fetch("/api/postTodo", {
+    fetch("/todos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -45,7 +31,21 @@ class TodoListApp extends Component {
         todo
       })
     })
-      .then(() => fetch("/api/getTodos"))
+      .then(() => fetch("/todos"))
+      .then(res => res.json())
+      .then(todos => {
+        this.setState({ todos });
+      });
+  }
+
+  handleDelete(todoId) {
+    fetch("/todos/" + todoId, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(() => fetch("/todos"))
       .then(res => res.json())
       .then(todos => {
         this.setState({ todos });
