@@ -1,7 +1,6 @@
 {
   "name": "todos_app",
   "description": "An example of the simplest web application",
-  "main": "app.js",
   "scripts": {
     "start-server": "nodemon server/index",
     "build": "webpack",
