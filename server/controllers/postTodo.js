@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Todo = require("../models/todoModel");
+const Todo = require("../models/todo");
 
 const postTodo = (req, res) => {
   new Todo({

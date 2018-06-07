@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Todo = require("../models/todoModel");
+const Todo = require("../models/todo");
 
 const deleteTodo = (req, res) => {
   Todo.deleteOne({ _id: req.params.id })
