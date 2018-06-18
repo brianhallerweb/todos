@@ -1,10 +1,9 @@
 require("./config/config");
+require("./db/mongoose");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
-const mongoose = require("./db/mongoose");
-const Todo = require("./models/todo");
 const getTodos = require("./controllers/getTodos");
 const postTodo = require("./controllers/postTodo");
 const deleteTodo = require("./controllers/deleteTodo");
